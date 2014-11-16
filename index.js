@@ -40,23 +40,24 @@ app.get('/status', function (req, res) {
 })
 
 app.get('/doorbell', function (req, res) {
-  res.set('Content-Type', 'text/xml');
+  console.log("Query params: ", req.query);
 
   callInEveryone();
 
   fs.readFile('views/conference.xml', function (err, data) {
     if (err) { console.log(err); }
 
+    res.set('Content-Type', 'text/xml');
     res.send(data);
   })
 })
 
 app.post('/conference', function (req, res) {
-  res.set('Content-Type', 'text/xml');
 
   fs.readFile('views/conferenceWithHangup.xml', function (err, data) {
     if (err) { console.log(err); }
 
+    res.set('Content-Type', 'text/xml');
     res.send(data);
   })
 })
