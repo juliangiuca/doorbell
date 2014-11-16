@@ -2,7 +2,7 @@
 <Response>
   <Dial timeLimit="30">
     <Conference beep="false" waitUrl="" startConferenceOnEnter="true">
-      Doorbell
+      Doorconf
     </Conference>
   </Dial>
 </Response>
