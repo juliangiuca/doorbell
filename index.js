@@ -7,8 +7,7 @@ var app = express();
 var fs = require('fs');
 
 var callInEveryone = function() {
-  //var toCall = [process.env.JULIAN_PH, process.env.LIZ_PH];
-  var toCall = [process.env.JULIAN_PH];
+  var toCall = [process.env.JULIAN_PH, process.env.LIZ_PH];
 
   toCall.forEach(function (number) {
     var options = {
