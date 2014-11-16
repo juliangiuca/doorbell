@@ -2,6 +2,6 @@
 <Response>
   <Say>One moment please</Say>
   <Dial timeLimit="30">
-    <Conference beep="false" waitUrl="" startConferenceOnEnter="true">MyConference</Conference>
+    <Conference beep="false" waitUrl="" startConferenceOnEnter="true">Doorconf</Conference>
   </Dial>
 </Response>

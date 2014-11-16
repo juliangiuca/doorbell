@@ -13,7 +13,8 @@ var callInEveryone = function() {
     var options = {
       from: process.env.TWILIO_NO,
       to: number,
-      url: 'http://door.innocuous.me/conference'
+      url: 'http://door.innocuous.me/conference',
+      IfMachine: 'Hangup'
     };
 
     client.calls.create(options,
