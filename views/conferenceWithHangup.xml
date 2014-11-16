@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Response>
-  <Dial>
+  <Dial timeLimit="30">
     <Conference beep="false" waitUrl="" startConferenceOnEnter="true", endConferenceOnExit="true" >
       MyConference
     </Conference>

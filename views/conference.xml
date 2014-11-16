@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Response>
-  <Dial>
-    <Say>One moment please</Say>
-    <Conference beep="false" waitUrl="" startConferenceOnEnter="true">
-      MyConference
-    </Conference>
+  <Say>One moment please</Say>
+  <Dial timeLimit="30">
+    <Conference beep="false" waitUrl="" startConferenceOnEnter="true">MyConference</Conference>
   </Dial>
 </Response>
