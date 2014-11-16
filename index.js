@@ -50,7 +50,7 @@ app.get('/doorbell', function (req, res) {
   })
 })
 
-app.get('/conference', function (req, res) {
+app.post('/conference', function (req, res) {
   fs.readFile('views/conference.xml', function (err, data) {
     if (err) { console.log(err); }
 
