@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.10.2",
+    "newrelic": "^1.13.3",
     "twilio": "^1.8.0"
   }
 }

@@ -1,3 +1,4 @@
+require('newrelic');
 var accountSid = process.env.TWILIO_SID;
 var authToken = process.env.TWILIO_AUTH;
 var client = require('twilio')(accountSid, authToken);
