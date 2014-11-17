@@ -48,9 +48,9 @@ app.get('/status', function (req, res) {
 app.get('/doorbell', function (req, res) {
   console.log("From ", req.query.From);
 
-  callInEveryone();
 
   if (req.query.From === process.env.DOOR_PH) {
+    callInEveryone();
     fs.readFile('views/conference.xml', function (err, data) {
       if (err) { console.log(err); }
 
