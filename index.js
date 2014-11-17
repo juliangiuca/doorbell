@@ -9,31 +9,6 @@ var http       = require('http');
 
 var interval = setInterval(function() { http.get(process.env.TARGET_URL + '/status'); }, 60000);
 
-var callInEveryone = function() {
-  var toCall = [process.env.JULIAN_PH];
-  //var toCall = [process.env.JULIAN_PH, process.env.LIZ_PH];
-
-  toCall.forEach(function (number) {
-    var options = {
-      from: process.env.TWILIO_NO,
-      to: number,
-      url: 'http://door.innocuous.me/conference',
-      IfMachine: 'Hangup'
-    };
-
-    console.log('Calling ', number);
-    client.calls.create(options,
-    function(err, call) {
-      if (err) { console.log(err); }
-
-      if (call) {
-        console.log('SID: ', call.sid);
-      }
-    });
-
-  })
-}
-
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
@@ -46,39 +21,23 @@ app.get('/status', function (req, res) {
 })
 
 app.get('/doorbell', function (req, res) {
-  console.log("From ", req.query.From);
-
-
-  if (req.query.From === process.env.DOOR_PH) {
-    callInEveryone();
-    fs.readFile('views/conference.xml', function (err, data) {
-      if (err) { console.log(err); }
-
-      res.set('Content-Type', 'text/xml');
-      res.send(data);
-    })
-  } else {
-    console.log('Calling ME');
-    fs.readFile('views/callMe.xml', {encoding: 'utf8'}, function (err, data) {
-      if (err) { console.log(err); }
-
-      debugger
-      res.set('Content-Type', 'text/xml');
-      res.send(data.replace(/Julian/,process.env.JULIAN_PH));
-    });
+  if (!res.query || !res.query.From) { 
+    return res.send("Oh hi there");
   }
 
-});
+  console.log("Receiving a call from ", req.query.From);
 
-app.post('/conference', function (req, res) {
-
-  fs.readFile('views/conferenceWithHangup.xml', function (err, data) {
+  fs.readFile('views/roundRobin.xml', {encoding: 'utf8'}, function (err, data) {
     if (err) { console.log(err); }
 
+    var parsedXml = data.replace(/Julian/, process.env.JULIAN_PH);
+    parsedXml = parsedXml.replace(/Liz/, process.env.LIZ_PH);
+
     res.set('Content-Type', 'text/xml');
-    res.send(data);
-  })
-})
+    res.send(parsedXml);
+  });
+
+});
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));
