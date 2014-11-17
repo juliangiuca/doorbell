@@ -58,6 +58,7 @@ app.get('/doorbell', function (req, res) {
       res.send(data);
     })
   } else {
+    console.log('Calling ME');
     fs.readFile('views/callMe.xml', function (err, data) {
       if (err) { console.log(err); }
 
