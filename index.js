@@ -5,6 +5,9 @@ var client = require('twilio')(accountSid, authToken);
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var http = require('http');
+
+var interval = setInterval(function() { http.get(process.env.TARGET_URL + '/status'); }, 60000);
 
 var callInEveryone = function() {
   var toCall = [process.env.JULIAN_PH, process.env.LIZ_PH];
@@ -36,6 +39,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/status', function (req, res) {
+  console.log("Status!");
   res.send('Hello World!');
 })
 

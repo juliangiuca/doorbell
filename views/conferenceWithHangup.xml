@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Response>
-  <Dial timeLimit="30">
+  <Dial>
     <Conference beep="false" waitUrl="" startConferenceOnEnter="true">
       Doorconf
     </Conference>
