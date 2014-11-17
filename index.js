@@ -59,9 +59,10 @@ app.get('/doorbell', function (req, res) {
     })
   } else {
     console.log('Calling ME');
-    fs.readFile('views/callMe.xml', function (err, data) {
+    fs.readFile('views/callMe.xml', {encoding: 'utf8'}, function (err, data) {
       if (err) { console.log(err); }
 
+      debugger
       res.set('Content-Type', 'text/xml');
       res.send(data.replace(/Julian/,process.env.JULIAN_PH));
     });
