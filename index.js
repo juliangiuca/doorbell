@@ -21,7 +21,7 @@ app.get('/status', function (req, res) {
 })
 
 app.get('/doorbell', function (req, res) {
-  if (!res.query || !res.query.From) { 
+  if (!req.query || !req.query.From) { 
     return res.send("Oh hi there");
   }
 
@@ -32,7 +32,6 @@ app.get('/doorbell', function (req, res) {
 
     var parsedXml = data.replace(/Julian/, process.env.JULIAN_PH);
     parsedXml = parsedXml.replace(/Liz/, process.env.LIZ_PH);
-    console.log(parsedXml);
 
     res.set('Content-Type', 'text/xml');
     res.send(parsedXml);
