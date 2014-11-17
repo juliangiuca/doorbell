@@ -63,7 +63,7 @@ app.get('/doorbell', function (req, res) {
       if (err) { console.log(err); }
 
       res.set('Content-Type', 'text/xml');
-      res.send(data);
+      res.send(data.replace(/Julian/,process.env.JULIAN_PH));
     });
   }
 

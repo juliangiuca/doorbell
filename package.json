@@ -1,13 +1,13 @@
 {
   "name": "doorbell",
   "version": "0.0.0",
-  "description": "",
+  "description": "Conference call me when my doorbell rings",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Julian Giuca",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.10.2",
     "newrelic": "^1.13.3",
