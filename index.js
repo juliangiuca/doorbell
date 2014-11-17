@@ -32,6 +32,7 @@ app.get('/doorbell', function (req, res) {
 
     var parsedXml = data.replace(/Julian/, process.env.JULIAN_PH);
     parsedXml = parsedXml.replace(/Liz/, process.env.LIZ_PH);
+    console.log(parsedXml);
 
     res.set('Content-Type', 'text/xml');
     res.send(parsedXml);
