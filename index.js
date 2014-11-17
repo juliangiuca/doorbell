@@ -20,6 +20,7 @@ var callInEveryone = function() {
       IfMachine: 'Hangup'
     };
 
+    console.log('Calling ', number);
     client.calls.create(options,
     function(err, call) {
       if (err) { console.log(err); }
