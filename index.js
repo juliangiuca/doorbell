@@ -10,7 +10,8 @@ var http       = require('http');
 var interval = setInterval(function() { http.get(process.env.TARGET_URL + '/status'); }, 60000);
 
 var callInEveryone = function() {
-  var toCall = [process.env.JULIAN_PH, process.env.LIZ_PH];
+  var toCall = [process.env.JULIAN_PH];
+  //var toCall = [process.env.JULIAN_PH, process.env.LIZ_PH];
 
   toCall.forEach(function (number) {
     var options = {
@@ -45,7 +46,7 @@ app.get('/status', function (req, res) {
 })
 
 app.get('/doorbell', function (req, res) {
-  console.log("Query params: ", req.query);
+  console.log("From ", req.query.From);
 
   callInEveryone();
 
